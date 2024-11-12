@@ -25,7 +25,7 @@ def main():
         flag_rand = flag_rand[1:-1]
         flag_rand = flag_rand.zfill(8)
 
-    flag = "god_save_the_queen_{" + flag_rand + "}"
+    flag = "gotta_catch_them_all_{" + flag_rand + "}"
     open('flag.txt', 'w').write(flag)
 
     # =====================================================================

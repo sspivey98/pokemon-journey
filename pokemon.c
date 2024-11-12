@@ -19,6 +19,18 @@ void mewtwo()
 {
   printf("What?! How'd you know I had a Mewtwo in the back?!?!\n");
   printf("Here is your flag!\n");
+  FILE *file;
+  char line[64];  // Buffer to store the first line
+  char *filename = "flag.txt";
+
+  // Open the file in read mode
+  file = fopen(filename, "r");
+
+  // Read the first line from the file
+  fgets(line, sizeof(line), file);
+  fclose(file);
+
+  printf("flag: %s", line);
 }
 
 void pikachu()
