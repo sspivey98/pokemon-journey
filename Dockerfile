@@ -13,7 +13,7 @@ COPY start.sh /opt/
 RUN chmod +x /opt/start.sh
 
 WORKDIR /app/
-RUN gcc pokemon.c -o pokemon
+RUN gcc -O0 -fno-omit-frame-pointer -fno-inline -Wall pokemon.c -o pokemon
 RUN tar czvf /challenge/artifacts.tar.gz pokemon
 
 FROM base AS challenge

@@ -3,7 +3,7 @@
 - Namespace: challenges
 - ID: pokemon-journey
 - Type: custom
-- Category: Overflow
+- Category: Heap overflow
 - Points: 30
 - Templatable: no
 - MaxUsers: 1
@@ -23,11 +23,11 @@ The program's binary can be downloaded {{url_for("pokemon", "here")}}.
 ## Hints
 
 - Have you ever heard of a heap overflow?
-- You may need to dig around to find the correct function pointer.
+- The correct function pointer is somewhere on the stack.
 
 ## Solution Overview
 
-Figure out how to overflow the buffer. Then, figure out where the address of the vulnerable function is and change it.
+Figure out how to overflow the buffer. Then, figure out where the address of the vulnerable function is and overwrite the pointer.
 
 ## Challenge Options
 
