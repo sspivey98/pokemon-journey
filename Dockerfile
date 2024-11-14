@@ -4,6 +4,8 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3 \
     gcc \
+    libc6-dev-i386 \
+    # Build in for x86
     socat
 
 RUN mkdir /challenge && chmod 700 /challenge
@@ -13,7 +15,7 @@ COPY start.sh /opt/
 RUN chmod +x /opt/start.sh
 
 WORKDIR /app/
-RUN gcc -O0 -fno-omit-frame-pointer -fno-stack-protector -fno-inline -Wall -z relro -z execstack pokemon.c -o pokemon
+RUN gcc -m32 -O0 -fno-stack-protector -fno-inline -Wall -z relro -z execstack -no-pie pokemon.c -o pokemon
 RUN tar czvf /challenge/artifacts.tar.gz pokemon
 
 FROM base AS challenge

